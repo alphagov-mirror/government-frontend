@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Government-Frontend Component Template Page
+  </title>
+
+  <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application", integrity: true, crossorigin: 'anonymous' %><!--<![endif]-->
+  <!--[if IE 6]><%= stylesheet_link_tag "application-ie6" %><script>var ieVersion = 6;</script><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag "application-ie7" %><script>var ieVersion = 7;</script><![endif]-->
+  <!--[if IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
+</head>
+<body>
+  <div id="wrapper" data-module="component-template">
+    <%= render 'govuk_publishing_components/components/phase_banner', phase: 'beta', message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." %>
+    <%= render 'govuk_publishing_components/components/breadcrumbs',  breadcrumbs: [
+      {
+        title: "Home",
+        url: "/home"
+      },
+      {
+        title: "Component Template"
+      }
+    ] %>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <%= render 'govuk_publishing_components/components/title', title: 'Vivamus ac dui ut tortor dignissim iaculis vel at sem', context: "Sed faucibus lorem sed ornare interdum." %>
+
+        <%= render 'govuk_publishing_components/components/lead_paragraph', text: "Nullam vel placerat lectus. Ut enim risus, mollis a purus et, sagittis facilisis nisi. Phasellus eleifend diam posuere orci ultrices maximus a accumsan lorem. Duis orci eros, mollis id lectus eu, sagittis facilisis augue. Sed metus magna, viverra a ante id, convallis rhoncus ligula. Nullam vel nisi arcu." %>
+
+      </div>
+      <div class="column-one-third">
+        <%= render "govuk_publishing_components/components/translation-nav", {
+          translations: [
+            {
+              locale: "en",
+              base_path: "/en",
+              text: "English",
+              active: true
+            },
+            {
+              locale: "hi",
+              base_path: "/hi",
+              text: "हिंदी"
+            }
+          ]
+        } %>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <%= render "components/publisher-metadata", {
+          published: "02 July 2018",
+          last_updated: "02 July 2018",
+          link_to_history: true,
+          other: {
+            From: [
+              "<a href='/government/organisations/government-digital-service'>Government Digital Service</a>"
+            ]
+          }
+        } %>
+      </div>
+      <div class="column-one-third">
+        <%= render "govuk_publishing_components/components/organisation_logo", {
+          organisation: {
+            name: "Land Registry",
+            url: "/government/organisations/land-registry",
+            brand: "department-for-business-innovation-skills",
+            image: {
+              url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/69/HMLR_logo.png",
+              alt_text: "Land Registry"
+            }
+          }
+        } %>
+      </div>
+    </div>
+
+    <%= render "components/banner", {
+      text: "Praesent vulputate, turpis sit amet lacinia vehicula, sapien purus condimentum nibh, sit amet pellentesque metus augue at libero."
+    } %>
+
+    <%= render "govuk_publishing_components/components/notice", {
+      title: "Aenean consectetur velit id libero fermentum, ut lacinia enim sodales. Etiam eget purus ac diam elementum efficitur."
+    } %>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <%= render "components/important-metadata", {
+          items: {
+            "Date of occurrence": "02 July 2018",
+            "Report type": "Template"
+          }
+        } %>
+
+        <%= render "components/figure", {
+          src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg",
+          alt: "An image of the lords chamber",
+          caption: "Curabitur dapibus aliquam vehicula."
+        } %>
+
+        <%= render "govuk_publishing_components/components/contents_list", {
+          contents: [
+            {
+              href: "#first-thing",
+              text: "Ut vitae ex auctor sapien pulvinar bibendum id a purus."
+            },
+            {
+              href: "#second-thing",
+              text: "Aenean in dapibus leo."
+            },
+            {
+              href: "#third-thing",
+              text: "Mauris non mauris rhoncus, gravida nisi a, pulvinar enim."
+            }
+          ]
+        } %>
+
+        <div class="responsive-bottom-margin">
+          <%= render 'govuk_publishing_components/components/govspeak', {} do %>
+            <p>Quisque vel ipsum condimentum, elementum magna nec, tristique dolor. Vivamus commodo augue id tellus lacinia pulvinar. Quisque consectetur tempus arcu in tempus. Sed ac viverra justo, a auctor nisl. Etiam ante arcu, rhoncus ut risus eget, pharetra commodo ex. Proin non quam consequat erat efficitur pellentesque in a odio. Morbi pellentesque lorem ut ornare tempor. Sed lacinia convallis sagittis. </p>
+          <% end %>
+
+          <%= render "govuk_publishing_components/components/button", {
+            text: "Start now",
+            href: "#",
+            start: true,
+            rel: "external",
+            margin_bottom: true
+          } %>
+
+          <%= render 'govuk_publishing_components/components/govspeak', {} do %>
+            <p>Donec gravida mauris eros, eget pellentesque nulla sodales quis. Donec magna orci, pulvinar et sem et, fringilla lobortis diam. Nullam sollicitudin velit lectus.</p>
+
+            <p>Donec feugiat efficitur lorem, eu dapibus risus faucibus eleifend. In sagittis, ligula a finibus facilisis, ex velit scelerisque felis, ut vulputate justo ex ultricies justo. Integer fringilla felis vitae maximus ullamcorper. </p>
+          <% end %>
+
+          <%= render "components/download-link", {
+            href: "/download-this"
+          } %>
+
+          <%= render 'govuk_publishing_components/components/govspeak', {} do %>
+            <p>Nulla commodo nisi at lorem cursus, sed pretium felis aliquam. Phasellus iaculis nulla aliquet vehicula feugiat. Donec molestie diam eu convallis imperdiet. Pellentesque tempus, ante eu gravida suscipit, purus orci venenatis nulla, ac vehicula mi ipsum non lorem. Etiam id est posuere, dignissim lacus ac, tempor nibh.</p>
+          <% end %>
+
+          <%= render 'govuk_publishing_components/components/subscription-links', email_signup_link: "/email", feed_link: "/feed.atom" %>
+        </div>
+        <%= render "govuk_publishing_components/components/heading", {
+          text: "Maecenas aliquam maximus nibh, id faucibus velit tristique id"
+        } %>
+
+        <%= render "govuk_publishing_components/components/document_list", {
+          margin_top: true,
+          margin_bottom: true,
+          items: [
+            {
+              link: {
+                text: "In lacus dolor, molestie sed neque sed, sollicitudin blandit lorem.",
+                path: "/government/link-1"
+              }
+            },
+            {
+              link: {
+                text: "Nulla facilisi.",
+                path: "/government/link-2"
+              },
+              metadata: {
+                description: "Phasellus efficitur, ipsum pretium sodales tempor, diam elit lacinia quam, sed fermentum leo orci eu nisi."
+              }
+            },
+            {
+              link: {
+                text: "In aliquam euismod dolor, in pretium turpis pretium quis.",
+                path: "/government/link-3"
+              },
+              metadata: {
+                document_type: "Phasellus a vehicula sem"
+              }
+            }
+          ]
+        } %>
+
+        <%= render "govuk_publishing_components/components/previous_and_next_navigation", {
+          previous_page: {
+            url: "previous-page",
+            title: "Previous page",
+            label: "1 of 3"
+          },
+          next_page: {
+            url: "next-page",
+            title: "Next page",
+            label: "3 of 3"
+          }
+        } %>
+
+        <div class="dont-print responsive-bottom-margin">
+          <%= render "govuk_publishing_components/components/share_links", {
+            title: "Share this page",
+            links: [
+              {
+                href: "/facebook-share-link",
+                text: "Facebook",
+                icon: "facebook"
+              },
+              {
+                href: "/twitter-share-link",
+                text: "Twitter",
+                icon: "twitter"
+              }
+            ]
+          } %>
+        </div>
+
+        <%= render "components/published-dates", {
+          published: "2nd July 2018",
+          last_updated: "2nd July 2018",
+          history: [
+            {
+              display_time: "1st January 1990",
+              note: "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur libero ex, pulvinar et tempus eu, sodales ut lacus.",
+              timestamp: "1990-01-01 15:42:37 +0000"
+            },
+            {
+              display_time: "20th July 1995",
+              note: "Curabitur gravida lobortis finibus.",
+              timestamp: "1995-07-20 15:42:37 +0000"
+            },
+            {
+              display_time: "14th October 2000",
+              note: "Suspendisse nec ipsum quis augue commodo pretium at sed magna.",
+              timestamp: "2000-10-14 15:42:37 +0000"
+            }
+          ]
+        } %>
+
+        <%= render "components/print-link", {
+          href: "/print-this"
+        } %>
+      </div>
+      <div class="column-one-third">
+        <%= render "govuk_publishing_components/components/related_navigation", {
+          links: {
+            ordered_related_items: [
+              {
+                title: "Etiam sed elit lobortis, molestie nulla et, maximus nisi",
+                base_path: "/related-1"
+              },
+              {
+                title: "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
+                base_path: "/related-2"
+              },
+              {
+                title: "Suspendisse rutrum odio sed tortor volutpat, vitae cursus elit ornare",
+                base_path: "/related-3"
+              }
+            ],
+            topical_events: [
+              {
+                title: "Vivamus sagittis nunc non lacus ultrices, non volutpat ligula consequat",
+                base_path: "/government/topical-event",
+                document_type: "topical_event"
+              }
+            ]
+          },
+          details: {
+            external_related_links: [
+              {
+                url: "/external-1",
+                title: "Mauris vestibulum bibendum venenatis"
+              },
+              {
+                url: "external-2",
+                title: "Curabitur quis ornare sem"
+              }
+            ]
+          }
+        }.with_indifferent_access %>
+      </div>
+    </div>
+
+    <%= render "govuk_publishing_components/components/feedback", {} %>
+  </div>
+</body>
+</html>
