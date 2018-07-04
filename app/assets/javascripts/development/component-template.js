@@ -11,7 +11,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   GOVUK.Modules.ComponentTemplate = function () {
     this.start = function (element) {
       findComponents(element)
-      addHoverState(componentSelectors)
+      addHoverListeners(componentSelectors)
+      addDragDropListeners(componentSelectors)
     }
   }
 
@@ -23,14 +24,73 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           class: this.className
         })
       }
-
       else if ($(this).children().length > 0) {
         findComponents($(this))
       }
     });
   }
 
-  function addHoverState(componentSelectors) {
+  function addDragDropListeners(componentSelectors) {
+    var draggableAreas = ["#wrapper", ".column-two-thirds", ".column-one-third"]
+
+    draggableAreas.forEach(function(draggableArea) {
+      $(draggableArea).on("dragenter", function(event) {
+        event.preventDefault()
+        return true
+      })
+
+      $(draggableArea).on("dragover", function() {
+        return false
+      })
+
+      $(draggableArea).on("drop", function(event) {
+        if (event.dataTransfer) {
+          var component = event.dataTransfer.getData("text");
+        }
+        else if (event.originalEvent.dataTransfer) {
+          var component = event.originalEvent.dataTransfer.getData("text");
+        }
+
+        event.target.appendChild($("." + component)[0]);
+        event.stopPropagation();
+        return false;
+      })
+    })
+
+
+    componentSelectors.forEach(function(componentObj) {
+      $(componentObj.component).attr("draggable", "true")
+      $(componentObj.component).on("dragstart", function(event) {
+        if (event.dataTransfer) {
+          event.dataTransfer.setData("text", event.target.getAttribute('class').split(' ')[0]);
+        }
+        else if (event.originalEvent.dataTransfer){
+            event.originalEvent.dataTransfer.setData("text", event.target.getAttribute('class').split(' ')[0]);
+        }
+      })
+      $(componentObj.component).on("dragenter", function(event) {
+        event.preventDefault()
+        return true
+      })
+      $(componentObj.component).on("dragover", function() {
+        return false
+      })
+      $(componentObj.component).on("drop", function(event) {
+        if (event.dataTransfer) {
+          var component = event.dataTransfer.getData("text");
+        }
+        else if (event.originalEvent.dataTransfer) {
+          var component = event.originalEvent.dataTransfer.getData("text");
+        }
+
+        componentObj.component.after($("." + component)[0]);
+        event.stopPropagation();
+        return false;
+      })
+    })
+  }
+
+  function addHoverListeners(componentSelectors) {
     componentSelectors.forEach(function(componentObj) {
       $(componentObj.component).on("mouseenter", addHoverBehaviours.bind(event, componentObj.component, true))
 
