@@ -15,7 +15,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  var findComponents = function(element) {
+  function findComponents(element) {
     element.children().each(function() {
       if ($(this).is('[class*="app-c"], [class*="pub-c"], [class*="gem-c"], [class*="govuk"]')) {
         componentSelectors.push({
@@ -30,7 +30,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     });
   }
 
-  var addHoverState = function(componentSelectors) {
+  function addHoverState(componentSelectors) {
     componentSelectors.forEach(function(componentObj) {
       $(componentObj.component).on("mouseenter", addHoverBehaviours.bind(event, componentObj.component, true))
 
@@ -40,6 +40,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   function addHoverBehaviours(component, append) {
     hideComponentButton(component, append)
+    editComponentButton(component, append)
   }
 
   function editComponentButton(component, append) {
@@ -116,13 +117,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  var hideComponent = function(component) {
+  function hideComponent(component) {
     $(component).css({
       "display": "none",
       "visibility": "none"
     })
 
     hiddenComponents.push(component)
+  }
+
+  function editComponentText(component) {
+    $(component).attr('contenteditable','true');
+    $("button", component).attr('contenteditable','false');
+
+    setTimeout(function() {
+      $(component).focus();
+  }, 0);
   }
 })(window, window.GOVUK)
 
