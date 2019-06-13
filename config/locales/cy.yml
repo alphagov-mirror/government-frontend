@@ -304,11 +304,11 @@ cy:
         other: Trawsgrifiadau
       transparency:
         zero:
-        one: Data tryloywder
+        one:
         two:
         few:
         many:
-        other: Data tryloywder
+        other:
       world_location_news_article:
         zero:
         one: Erthygl newyddion
