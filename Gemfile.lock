@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alphagov/govuk_publishing_components.git
-  revision: d798285df554bf7edd17c6a532b13bf925f3faa1
+  revision: 70ae6cf201e12ab7eba99c1f83f461c8c070a7fc
   branch: test-smokey-fix
   specs:
     govuk_publishing_components (17.19.1)
