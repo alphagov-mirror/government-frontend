@@ -11,7 +11,12 @@ Rails.application.routes.draw do
 
   get "healthcheck", to: proc { [200, {}, [""]] }
 
-  get "*path/:variant" => "content_items#show",
+  # Testing guides as a single page
+  get '/voting-in-the-uk/polling-stations', to: redirect('/voting-in-the-uk#polling-stations')
+  get '/voting-in-the-uk/postal-voting', to: redirect('/voting-in-the-uk#postal-voting')
+  get '/voting-in-the-uk/voting-by-proxy', to: redirect('/voting-in-the-uk#voting-by-proxy')
+
+  get '*path/:variant' => 'content_items#show',
       constraints: {
         variant: /print/,
       }
