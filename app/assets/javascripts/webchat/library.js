@@ -24,7 +24,7 @@
     var webchatStateClass   = 'js-webchat-advisers-'
     var intervalID          = null
     var lastRecordedState   = null
-    var response_datatype    = $el.attr('data-redirect')
+    var response_datatype    = $el.attr('data-payload')
 
     function init () {
       if (!availabilityUrl || !openUrl) throw 'urls for webchat not defined'
@@ -35,7 +35,7 @@
 
     function handleOpenChat (evt) {
       evt.preventDefault()
-      this.dataset.redirect =="true" ? window.location.href = openUrl : global.open(openUrl, 'newwin', 'width=366,height=516')
+      this.dataset.redirect == "true" ? window.location.href = openUrl : global.open(openUrl, 'newwin', 'width=366,height=516')
       trackEvent('opened')
     }
 
