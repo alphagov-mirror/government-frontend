@@ -5,7 +5,6 @@
     data-availability-url="<%= @content_item.webchat.availability_url %>"
     data-open-url="<%= @content_item.webchat.open_url %>"
     data-redirect="<%=  @content_item.webchat.open_url_redirect.present? ? 'true': 'false' %>"
-    data-payload="<%=  @content_item.webchat.availability_payload_format.present? ? @content_item.webchat.availability_payload_format : 'json' %>"
   >
     <% if webchat_unavailable? %>
       <%= unavailability_message %>

@@ -24,7 +24,6 @@
     var webchatStateClass   = 'js-webchat-advisers-'
     var intervalID          = null
     var lastRecordedState   = null
-    var response_datatype    = $el.attr('data-payload')
 
     function init () {
       if (!availabilityUrl || !openUrl) throw 'urls for webchat not defined'
@@ -43,7 +42,6 @@
       var ajaxConfig = {
         url: availabilityUrl,
         type: 'GET',
-        dataType: response_datatype,
         timeout: AJAX_TIMEOUT,
         success: apiSuccess,
         error: apiError
