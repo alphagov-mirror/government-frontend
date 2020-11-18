@@ -48,5 +48,6 @@ Rails.application.configure do
   config.hosts += [
     "draft-government-frontend.dev.gov.uk",
     "government-frontend.dev.gov.uk",
+    "bs-local.com",
   ]
 end
