@@ -38,6 +38,18 @@ class TravelAdvicePresenter < ContentItemPresenter
     content_item["details"]["country"]["name"]
   end
 
+  def ireland?
+    country_name == "Ireland"
+  end
+
+  def country_with_specific_covid_guidance?
+    countries_with_specific_covid_travel_advice.include?(country_name)
+  end
+
+  def countries_with_specific_covid_travel_advice
+    ["Afghanistan", "another place"]
+  end
+
   def is_summary?
     @part_slug.nil?
   end
