@@ -1,5 +1,5 @@
 describe('Test variant tracker', function () {
-  "use strict"
+  'use strict'
 
   var tracker,
     element,
@@ -18,7 +18,7 @@ describe('Test variant tracker', function () {
     GOVUK.Modules.CookielessTracker = FakeCookielessTracker
 
     tracker = new GOVUK.Modules.TrackVariant()
-  });
+  })
 
   afterEach(function () {
     GOVUK.Modules.CookielessTracker = null
