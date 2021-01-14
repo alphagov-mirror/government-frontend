@@ -18,6 +18,3 @@ jQuery(function ($) {
     new GOVUK.SetGaClientIdOnForm({ $form: $form }) // eslint-disable-line no-new
   }
 })
-
-// Start modules within the head
-window.GOVUK.modules.start($('head'))
