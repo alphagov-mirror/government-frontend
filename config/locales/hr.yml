@@ -308,6 +308,9 @@ hr:
         few:
         many:
         other:
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one:
         few:

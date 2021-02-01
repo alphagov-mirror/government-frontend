@@ -188,6 +188,9 @@ be:
         few:
         many:
         other: "Выступы"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: "Заява ў парламенце"
         few:

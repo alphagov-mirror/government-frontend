@@ -267,6 +267,9 @@ cy:
         few:
         many:
         other: Areithiau
+      standard:
+        one:
+        other:
       statement_to_parliament:
         zero:
         one: Datganiad i'r senedd

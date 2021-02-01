@@ -188,6 +188,9 @@ sr:
         few:
         many:
         other: Govori
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: obraćanje Parlamentu
         few:

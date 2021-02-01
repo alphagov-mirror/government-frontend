@@ -114,6 +114,9 @@ th:
       speech:
         one: "สุนทรพจน์"
         other: "สุนทรพจน์"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: "แถลงการณ์ต่อรัฐสภา"
         other: "แถลงการณ์ต่อรัฐสภา"

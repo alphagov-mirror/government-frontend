@@ -116,6 +116,9 @@ zh:
       speech:
         one: "演讲"
         other: "演讲"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: "对议会的声明"
         other: "对议会的声明"

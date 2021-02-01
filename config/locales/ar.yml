@@ -284,6 +284,9 @@ ar:
         few:
         many:
         other: "كلمات"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         zero:
         one: "تصريح للبرلمان"

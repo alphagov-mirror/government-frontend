@@ -151,6 +151,9 @@ lt:
         one: Kalba
         few:
         other: Kalbos
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: Kreipimasis į parlamentą
         few:

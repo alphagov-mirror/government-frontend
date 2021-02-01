@@ -114,6 +114,9 @@ ja:
       speech:
         one: "スピーチ"
         other: "スピーチ"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: "閣僚声明"
         other: "閣僚声明"

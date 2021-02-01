@@ -114,6 +114,9 @@ ko:
       speech:
         one: "연설문"
         other: "연설문"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: "의회로 성명"
         other: "의회로 성명"

@@ -114,6 +114,9 @@ az:
       speech:
         one: "çıxış"
         other: "Çıxışlar"
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: Parlamentə bəyanat
         other: Parlamentə bəyanatlar

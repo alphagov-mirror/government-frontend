@@ -114,6 +114,9 @@ vi:
       speech:
         one: Bài phát biểu
         other: Các bài phát biểu
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: Tuyên bố tới Quốc hội
         other: Tuyên bố tới Quốc hội

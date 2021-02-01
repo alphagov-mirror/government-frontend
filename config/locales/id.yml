@@ -114,6 +114,9 @@ id:
       speech:
         one: Pidato
         other: Pidato-pidato
+      standard:
+        one:
+        other:
       statement_to_parliament:
         one: Pernyatan kepada Parlemen
         other: Pernyataan-pernyaatan kepada Parlemen
