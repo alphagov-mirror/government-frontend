@@ -9,6 +9,12 @@ class ContentItemsController < ApplicationController
   rescue_from PresenterBuilder::SpecialRouteReturned, with: :error_notfound
   rescue_from PresenterBuilder::GovernmentReturned, with: :error_notfound
 
+  include WeightedLinksAbTestable
+
+  before_action :set_weighted_links_response
+
+  helper_method :weighted_links_variant, :weighted_links_testable?
+
   attr_accessor :content_item, :taxonomy_navigation
 
   def show
@@ -88,8 +94,13 @@ private
   def load_content_item
     content_item = Services.content_store.content_item(content_item_path)
 
-    if Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
-      content_item["links"]["ordered_related_items"] = content_item["links"].fetch("suggested_ordered_related_items", [])
+    if show_suggested_links?(content_item)
+      suggested_links_builder ||= SuggestedLinksBuilder.new(content_item)
+      content_item["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
+                                                         suggested_links_builder.weighted_related_items
+                                                       else
+                                                         suggested_links_builder.suggested_related_links
+                                                       end
     end
 
     @content_item = PresenterBuilder.new(
@@ -204,5 +215,9 @@ private
       exception.content_item, request.path, request.query_string
     )
     redirect_to destination, status: status_code
+  end
+
+  def show_suggested_links?(content_item)
+    Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
   end
 end

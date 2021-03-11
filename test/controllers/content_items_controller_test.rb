@@ -385,6 +385,20 @@ class ContentItemsControllerTest < ActionController::TestCase
     assert_select ".gem-c-contextual-footer", false
   end
 
+  test "shows the B variant suggested related link" do
+    content_item = content_store_has_example_item("/guidance/national-lockdown-stay-at-home", schema: "detailed_guide")
+    stub_content_store_has_item(content_item["base_path"], content_item)
+    with_variant WeightedLinksAbTestable: "B" do
+      get :show, params: { path: path_for(content_item) }
+    end
+  end
+
+  test "headers are not modified when pages are not in AB test" do
+    content_item = content_store_has_schema_example("case_study", "case_study")
+    get :show, params: { path: path_for(content_item) }
+    assert_response_not_modified_for_ab_test(WeightedLinksAbTestable)
+  end
+
   def path_for(content_item, locale = nil)
     base_path = content_item["base_path"].sub(/^\//, "")
     base_path.gsub!(/\.#{locale}$/, "") if locale
