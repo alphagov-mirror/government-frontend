@@ -97,7 +97,7 @@ private
     if show_suggested_links?(content_item)
       suggested_links_builder ||= SuggestedLinksBuilder.new(content_item)
       content_item["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
-                                                         suggested_links_builder.weighted_related_items
+                                                         suggested_links_builder.weighted_related_links
                                                        else
                                                          suggested_links_builder.suggested_related_links
                                                        end

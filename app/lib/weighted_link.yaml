@@ -1,0 +1,9 @@
+weighted_links:
+  - page_base_path: "/guidance/national-lockdown-stay-at-home"
+    related_links:
+      - base_path: "/coronavirus"
+      - base_path: "/guidance/making-a-support-bubble-with-another-household"
+#  - page_base_path: ""
+#    related_links:
+#      - base_path: ""
+#      - base_path: ""
