@@ -45,11 +45,26 @@ class WeightedLinksPageTest < ActiveSupport::TestCase
   test "load" do
     attrs = {
       "page_base_path" => "/coronavirus",
-      "related_links" => %w[stuff in here],
+      "related_links" => %w[/stay-at-home /wear-a-mask /wash-your-hands],
     }
-
     page = WeightedLinksPage.load(attrs)
+
     assert_equal "/coronavirus", page.page_base_path
-    assert page.related_links.first.is_a?(RelatedLink)
+    assert page.related_links.is_a?(Array)
+
+    %w[/stay-at-home /wear-a-mask /wash-your-hands].each do |related_link|
+      assert page.related_links.include?(related_link)
+    end
+  end
+
+  test "find_page_with_base_path" do
+    attrs = {
+      "page_base_path" => "/brexit",
+      "related_links" => %w[/travelling-abroad /customs /citizenship],
+    }
+    page = WeightedLinksPage.load(attrs)
+
+    WeightedLinksPage.expects(:find_page_with_base_path).with("/brexit").returns(page)
+    assert_equal page, WeightedLinksPage.find_page_with_base_path("/brexit")
   end
 end

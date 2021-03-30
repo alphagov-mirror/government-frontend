@@ -1,7 +1,7 @@
 class WeightedLinksPage
   include ActiveModel::Validations
 
-  CONFIG_PATH = Rails.root.join("app/lib/weighted_links.yaml")
+  CONFIG_PATH = Rails.root.join("app/lib/weighted_links_pages.yaml")
 
   attr_accessor :page_base_path, :related_links
 
@@ -13,13 +13,17 @@ class WeightedLinksPage
     validate!
   end
 
+  def self.find_page_with_base_path(base_path)
+    load_all.find do |page|
+      page.page_base_path == base_path
+    end
+  end
+
   def self.load(params)
     new(params)
   end
 
-  # YAML.load_file(CONFIG_PATH)["questions"].map { |q| load(q) }
-  # 1. Load YAML file
-  # 2. Iterate over each entry in YAML
-  # 3. Parse and instantiate class object on each
-  # 4. Parse and instantiate class for each Related Link
+  def self.load_all
+    @load_all ||= YAML.load_file(CONFIG_PATH)["weighted_links_pages"].map { |page| load(page) }
+  end
 end
