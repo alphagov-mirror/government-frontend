@@ -96,11 +96,6 @@ private
 
     if show_suggested_links?(content_item)
       suggested_links_builder ||= SuggestedLinksBuilder.new(content_item)
-      puts "SHOW SUGGESTED"
-      pp suggested_links_builder.suggested_related_links
-
-      puts "SHOW WEIGHTED"
-      pp suggested_links_builder.weighted_related_links
 
       content_item["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
                                                          suggested_links_builder.weighted_related_links
