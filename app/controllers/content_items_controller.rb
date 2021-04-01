@@ -220,6 +220,5 @@ private
 
   def show_suggested_links?(content_item)
     Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
-    true
   end
 end
