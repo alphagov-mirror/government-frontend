@@ -95,20 +95,14 @@ private
     content_item_data = Services.content_store.content_item(content_item_path)
 
     if show_suggested_links?(content_item_data)
-      puts "SHOW RELATED LINKS"
       suggested_links_builder ||= SuggestedLinksBuilder.new(content_item_data)
 
       content_item_data["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
-                                                         puts "WEIGHTED LINKS"
                                                          suggested_links_builder.weighted_related_links
                                                        else
-                                                         puts "SUGGESTED LINKS"
                                                          suggested_links_builder.suggested_related_links
                                                        end
     end
-
-    puts "RELATED LINKS"
-    pp content_item_data["links"]["ordered_related_items"]
 
     @content_item = PresenterBuilder.new(
       content_item_data,
@@ -225,10 +219,6 @@ private
   end
 
   def show_suggested_links?(content_item)
-    puts "CONTENT ITEM LINKS"
-    pp content_item["links"]
-    flag = Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
-    puts "FLAG? #{flag}"
-    flag
+    Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
   end
 end
