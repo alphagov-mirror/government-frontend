@@ -92,20 +92,26 @@ private
   end
 
   def load_content_item
-    content_item = Services.content_store.content_item(content_item_path)
+    content_item_data = Services.content_store.content_item(content_item_path)
 
-    if show_suggested_links?(content_item)
-      suggested_links_builder ||= SuggestedLinksBuilder.new(content_item)
+    if show_suggested_links?(content_item_data)
+      puts "SHOW RELATED LINKS"
+      suggested_links_builder ||= SuggestedLinksBuilder.new(content_item_data)
 
-      content_item["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
+      content_item_data["links"]["ordered_related_items"] = if weighted_links_variant.variant?("B")
+                                                         puts "WEIGHTED LINKS"
                                                          suggested_links_builder.weighted_related_links
                                                        else
+                                                         puts "SUGGESTED LINKS"
                                                          suggested_links_builder.suggested_related_links
                                                        end
     end
 
+    puts "RELATED LINKS"
+    pp content_item_data["links"]["ordered_related_items"]
+
     @content_item = PresenterBuilder.new(
-      content_item,
+      content_item_data,
       content_item_path,
       view_context,
     ).presenter
@@ -168,9 +174,9 @@ private
 
   def set_use_recommended_related_links_header
     response.headers["Vary"] = [response.headers["Vary"], FeatureFlagNames.recommended_related_links].compact.join(", ")
-
     related_links_request_header = RequestHelper.get_header(FeatureFlagNames.recommended_related_links, request.headers)
     required_header_value = Services.feature_toggler.feature_flags.get_feature_flag(FeatureFlagNames.recommended_related_links)
+
     response.headers[FeatureFlagNames.recommended_related_links] = (related_links_request_header == required_header_value).to_s
   end
 
@@ -219,6 +225,10 @@ private
   end
 
   def show_suggested_links?(content_item)
-    Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
+    puts "CONTENT ITEM LINKS"
+    pp content_item["links"]
+    flag = Services.feature_toggler.use_recommended_related_links?(content_item["links"], request.headers)
+    puts "FLAG? #{flag}"
+    flag
   end
 end

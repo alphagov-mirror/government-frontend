@@ -20,6 +20,6 @@ module WeightedLinksAbTestable
   end
 
   def weighted_links_testable?
-    %w[/guidance/national-lockdown-stay-at-home].include?(request.path)
+    WeightedLinksPage.find_page_with_base_path(request.path)
   end
 end
